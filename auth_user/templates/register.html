@@ -1,0 +1,151 @@
+{% extends 'main.html' %}
+
+{% block css %}
+<style>
+    .register-container {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 480px;
+    background: #101a30;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #263650;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.register-card h1 {
+    color: #facc15;
+    text-align: center;
+}
+
+.register-card p {
+    color: #cbd5e1;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.register-field {
+    margin-bottom: 17px;
+}
+
+.register-field label {
+    display: block;
+    color: #e5e7eb;
+    margin-bottom: 7px;
+}
+
+.register-field input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    background: #080d1c;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: white;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 13px;
+    background: #facc15;
+    color: #111827;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background: #eab308;
+}
+
+.login-link {
+    text-align: center;
+    color: #cbd5e1;
+    margin-top: 20px;
+}
+
+.login-link a {
+    color: #facc15;
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .register-card {
+        padding: 20px;
+    }
+}
+</style>
+{% endblock%}
+
+{% block content %}
+<div class="register-container"><div class="register-card">
+
+    <h1>Create Your Account</h1>
+    <p>Join Space Explorer and discover the universe.</p>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="register-field">
+            <label>First Name</label>
+            <input type="text" name="fname" required>
+        </div>
+
+        <div class="register-field">
+            <label>Last Name</label>
+            <input type="text" name="lname" required>
+        </div>
+
+        <div class="register-field">
+            <label>Username</label>
+            <input type="text" name="uname" required>
+        </div>
+
+        <div class="register-field">
+            <label>Email Address</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div class="register-field">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" required>
+        </div>
+
+        <div class="register-field">
+            <label>Profile Picture</label>
+            <input type="file" name="image" accept="image/*">
+        </div>
+
+        <div class="register-field">
+            <label>Password</label>
+            <input type="password" name="pasw" required>
+        </div>
+
+        <div class="register-field">
+            <label>Confirm Password</label>
+            <input type="password" name="cpasw" required>
+        </div>
+
+        <button type="submit" class="register-btn">
+            Create Account
+        </button>
+
+    </form>
+
+    <div class="login-link">
+        Already have an account?
+        <a href="{% url 'login_' %}">Login</a>
+    </div>
+
+</div>
+
+</div>
+{% endblock %}

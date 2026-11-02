@@ -1,0 +1,160 @@
+{% extends 'main.html' %}
+
+{% block css %}
+
+<style>
+.about-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 20px;
+    color: white;
+}
+
+.about-hero {
+    text-align: center;
+    padding: 55px 20px;
+    background: rgba(8, 13, 28, 0.85);
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    border-radius: 20px;
+}
+
+.about-hero h1 {
+    color: #facc15;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.about-hero p {
+    color: #cbd5e1;
+    line-height: 1.8;
+}
+
+.about-section {
+    margin-top: 30px;
+    padding: 30px;
+    background: rgba(8, 13, 28, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 16px;
+}
+
+.about-section h2 {
+    color: #facc15;
+    margin-bottom: 18px;
+}
+
+.about-section p {
+    color: #d1d5db;
+    line-height: 1.8;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tech-list span {
+    padding: 10px 17px;
+    background: #17243d;
+    border: 1px solid #475569;
+    border-radius: 20px;
+    color: #facc15;
+    font-size: 14px;
+}
+
+.creator-name {
+    color: #facc15;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.about-footer {
+    text-align: center;
+    margin-top: 35px;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+@media(max-width: 600px) {
+    .about-hero h1 {
+        font-size: 27px;
+    }
+
+    .about-section {
+        padding: 22px 17px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="about-container"><section class="about-hero">
+    <h1>Beyond the Stars</h1>
+    <p>
+        Welcome to Space Explorer — a journey through the universe
+        powered by technology and curiosity.
+    </p>
+</section>
+
+<section class="about-section">
+    <h2>Mission Briefing</h2>
+    <p>
+        Space Explorer is a web application that allows users to
+        discover the wonders of space through NASA's Astronomy
+        Picture of the Day API.
+    </p>
+    <p>
+        Users can explore astronomical pictures by date, view
+        explanations, create favourites and manage their personal
+        accounts.
+    </p>
+</section>
+
+<section class="about-section">
+    <h2> Meet the Creator</h2>
+    <p class="creator-name">TELUGU VIVEK</p>
+    <p>
+        I am a Computer Science graduate interested in Python
+        development and web technologies.
+    </p>
+    <p>
+        I developed Space Explorer to apply my programming
+        knowledge to a practical project, strengthen my Django
+        skills and build an interactive experience inspired
+        by space exploration.
+    </p>
+</section>
+
+<section class="about-section">
+    <h2>Technology Behind the Mission</h2>
+
+    <div class="tech-list">
+        <span>Python</span>
+        <span>Django</span>
+        <span>NASA APOD API</span>
+        <span>SQLite</span>
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+    </div>
+</section>
+
+<section class="about-section">
+    <h2>Why I Built This</h2>
+    <p>
+        The universe is full of mysteries waiting to be explored.
+        I wanted to combine my interest in technology with the
+        fascinating world of astronomy.
+    </p>
+    <p>
+        This project represents my learning journey, creativity
+        and passion for developing useful web applications.
+    </p>
+</section>
+
+<div class="about-footer">
+    <p>Made with curiosity and code.</p>
+    <p>Space Explorer | A Personal Developer Project</p>
+</div>
+
+</div>{% endblock %}

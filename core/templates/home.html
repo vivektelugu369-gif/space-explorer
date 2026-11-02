@@ -1,0 +1,396 @@
+{% extends 'main.html' %}
+
+{% block css %}
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: #080d1c;
+        color: #f1f5f9;
+        font-family: Arial, sans-serif;
+    }
+
+    .space-container {
+        width: 100%;
+        padding: 40px 20px;
+    }
+
+    .hero-section {
+        max-width: 1000px;
+        margin: 0 auto 35px;
+        padding: 35px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #111b3b, #192b50);
+        border: 1px solid #263c65;
+        border-radius: 18px;
+    }
+
+    .hero-section h1 {
+        margin-bottom: 12px;
+        font-size: 38px;
+        color: #8be9fd;
+    }
+
+    .hero-section p {
+        color: #cbd5e1;
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .date-form {
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 28px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        text-align: left;
+    }
+
+    .form-group label {
+        color: #e2e8f0;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        padding: 12px;
+        background: #0b1225;
+        color: #ffffff;
+        border: 1px solid #475569;
+        border-radius: 8px;
+        outline: none;
+    }
+
+    .form-group input:focus {
+        border-color: #38bdf8;
+    }
+
+    .explore-btn {
+        padding: 12px 24px;
+        background: #0ea5e9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .explore-btn:hover {
+        background: #0284c7;
+    }
+
+    .gallery-heading {
+        margin: 35px 0 25px;
+        text-align: center;
+        color: #8be9fd;
+    }
+
+    .picture-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        max-width: 1250px;
+        margin: 0 auto;
+        align-items: start;
+    }
+
+    .picture-card {
+        min-width: 0;
+        padding: 22px;
+        background: #111827;
+        border: 1px solid #273449;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        overflow-wrap: anywhere;
+    }
+
+    .picture-card h2 {
+        margin-top: 0;
+        color: #7dd3fc;
+        font-size: 22px;
+        line-height: 1.4;
+    }
+
+    .picture-card p {
+        color: #cbd5e1;
+        line-height: 1.7;
+    }
+
+    .picture-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 380px;
+        object-fit: contain;
+        margin: 18px auto;
+        border-radius: 10px;
+        background: #080d1c;
+    }
+
+    .picture-card h3 {
+        margin-top: 25px;
+        color: #67e8f9;
+        font-size: 18px;
+    }
+
+    .explanation {
+        color: #d1d5db;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .explanation a {
+        color: #7dd3fc;
+        text-decoration: none;
+    }
+
+    .explanation a:hover {
+        text-decoration: underline;
+    }
+
+    .picture-card > a {
+        display: inline-block;
+        padding: 10px 16px;
+        background: #0ea5e9;
+        color: white;
+        text-decoration: none;
+        border-radius: 7px;
+    }
+
+    .picture-card > a:hover {
+        background: #0284c7;
+    }
+
+    .message-box {
+        max-width: 650px;
+        margin: 30px auto;
+        padding: 22px;
+        text-align: center;
+        color: #cbd5e1;
+        background: #111827;
+        border: 1px solid #273449;
+        border-radius: 12px;
+    }
+
+    .page-divider {
+        max-width: 1250px;
+        margin: 30px auto;
+        border: none;
+        border-top: 1px solid #273449;
+    }
+
+    @media (max-width: 600px) {
+        .space-container {
+            padding: 20px 12px;
+        }
+
+        .hero-section {
+            padding: 25px 15px;
+        }
+
+        .hero-section h1 {
+            font-size: 29px;
+        }
+
+        .date-form {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .form-group input {
+            width: 100%;
+        }
+
+        .explore-btn {
+            width: 100%;
+        }
+
+        .picture-gallery {
+            grid-template-columns: 1fr;
+        }
+
+        .picture-card {
+            padding: 16px;
+        }
+    }
+    .explore-but{
+        width: 100%;
+        margin-top: 15px;
+        padding: 12px;
+        background: #facc15;
+        color: #111827;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s
+    }
+    .explore-but:hover{
+        background: #eab308;
+    }
+    @media screen and (max-width:768px){
+        .space-container{
+            padding: 15px;
+        }
+        .hero-section{
+
+            padding: 25px 15px;
+        }
+        .hero-section h1{
+            font-size: 28px;
+        }
+        .hero-section p{
+            font-size: 14px;
+        }
+        .date-formr{
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group{
+            width: 100%;
+        }    
+        .date-form input{
+            width: 100%;
+            box-sizing: border-box;
+        }    
+        .explore-btn{
+            width: 100%;
+        }
+        .picture-gallery{
+            grid-template-columns: 1fr;
+        }
+        .pictures-card{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .picture-card img{
+            max-width: 100%;
+            height: auto;
+        }
+        .explanation{
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="space-container">
+
+    <div class="hero-section">
+        <h1>Welcome to Space Explorer</h1>
+
+        <p>
+            Explore the universe with NASA's Astronomy Pictures of the Day.
+        </p>
+
+        <form method="GET" action="" class="date-form">
+
+            <div class="form-group">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date"
+                       name="start_date" required max="{% now 'Y-m-d' %}">
+            </div>
+
+            <div class="form-group">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date"
+                       name="end_date" required max="{% now 'Y-m-d' %}">
+            </div>
+
+            <button type="submit" class="explore-btn">
+                Explore
+            </button>
+
+        </form>
+    </div>
+
+    {% if pictures %}
+
+        <h2 class="gallery-heading">Explore the Universe</h2>
+
+        <div class="picture-gallery">
+
+            {% for picture in pictures %}
+
+                <div class="picture-card">
+
+                    <h2>{{ picture.title }}</h2>
+
+                    <p>
+                        <strong>Date:</strong> {{ picture.date }}
+                    </p>
+
+                    {% if picture.media_type == "image" %}
+
+                        <img src="{{ picture.hdurl|default:picture.url }}"
+                             alt="{{ picture.title }}"
+                             width="600">
+
+                    {% elif picture.media_type == "video" %}
+
+                        <a href="{{ picture.url }}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Watch video
+                        </a>
+
+                    {% endif %}
+
+                    <h3>About this Picture</h3>
+
+                    <div class="explanation">
+                        {{ picture.explanation|safe }}
+                    </div>
+
+                    {% if picture.media_type == "image" %}
+                        {% if picture.date in saved_favourite_date %}
+                            <button type="button" class="explore-but">❤️Added to Favorites</button>
+                        {% else %}
+                            <form method="post" action="{% url 'add_favourate' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="title" value="{{ picture.title }}">
+                                <input type="hidden" name="date" value="{{ picture.date }}">
+                                <input type="hidden" name="image_url" value="{{ picture.hdurl|default:picture.url }}">
+                                <input type="hidden" name="explanation" value="{{ picture.explanation }}">
+
+                                <button type="submit" class="explore-but">Add to Favorites</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% elif start_date and end_date %}
+
+        <div class="message-box">
+            <p>No astronomy pictures were found for this date range.</p>
+        </div>
+
+    {% else %}
+
+        <div class="message-box">
+            <p>Select a start date and end date to explore astronomy pictures.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+{% endblock %}

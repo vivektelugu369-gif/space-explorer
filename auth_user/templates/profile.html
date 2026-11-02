@@ -1,0 +1,182 @@
+{% extends 'main.html' %}
+
+{% block css %}
+<style>
+.profile-container {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+    box-sizing: border-box;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 35px;
+    background: rgba(8, 13, 28, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    border-radius: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+.profile-card h1 {
+    color: #facc15;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.profile-image {
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #facc15;
+    padding: 4px;
+    margin-bottom: 25px;
+}
+
+.no-image {
+    width: 135px;
+    height: 135px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background: #17243d;
+    border: 2px dashed #facc15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #cbd5e1;
+    font-size: 13px;
+}
+
+.profile-details {
+    text-align: left;
+    margin: 10px 0 25px;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 13px 5px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    color: #e2e8f0;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.profile-row span:first-child {
+    color: #facc15;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.profile-actions a {
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.update-btn {
+    background: #facc15;
+    color: #111827;
+}
+
+.password-btn {
+    background: transparent;
+    color: #facc15;
+    border: 1px solid #facc15;
+}
+
+.profile-actions a:hover {
+    transform: translateY(-3px);
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 25px 18px;
+    }
+
+    .profile-card h1 {
+        font-size: 24px;
+    }
+
+    .profile-row {
+        font-size: 13px;
+    }
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="profile-container">
+    <div class="profile-card">    <h1> Explorer Profile</h1>
+
+    {% if profile.image %}
+        <img src="{{ profile.image.url }}"
+             alt="Profile Picture"
+             class="profile-image">
+    {% else %}
+        <div class="no-image">
+            No Profile Picture
+        </div>
+    {% endif %}
+
+    <div class="profile-details">
+
+        <div class="profile-row">
+            <span>First Name</span>
+            <span>{{ request.user.first_name }}</span>
+        </div>
+
+        <div class="profile-row">
+            <span>Last Name</span>
+            <span>{{ request.user.last_name }}</span>
+        </div>
+
+        <div class="profile-row">
+            <span>Username</span>
+            <span>{{ request.user.username }}</span>
+        </div>
+
+        <div class="profile-row">
+            <span>Email</span>
+            <span>{{ request.user.email }}</span>
+        </div>
+
+        <div class="profile-row">
+            <span>Phone</span>
+            <span>{{ profile.phone }}</span>
+        </div>
+
+    </div>
+
+    <div class="profile-actions">
+        <a href="{% url 'update_profile' %}" class="update-btn">
+             Update Profile
+        </a>
+
+        <a href="{% url 'reset_password' %}" class="password-btn">
+             Change Password
+        </a>
+    </div>
+
+</div>
+
+</div>{% endblock %}

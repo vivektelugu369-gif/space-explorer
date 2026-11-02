@@ -1,0 +1,85 @@
+{% extends 'main.html' %}
+
+{% block css %}
+<style>
+    body{
+        background: #080d1c;
+        color: #f1f5f9;
+        font-family: Arial, sans-serif;
+    }
+    .favourites-container{
+        max-width: 1200px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+    .favourites-heading{
+        text-align: center;
+        color: #8be9fd;
+        margin-bottom: 30px;
+    }
+    .favourites-gallery{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+        gap: 25px;
+    }
+    .favourite-card{
+        padding: 20px;
+        background: #111827;
+        border: 1px solid #273449;
+        border-radius: 15px;
+    }
+    .favourite-card h2{
+        color: #7dd3fc;
+    }
+    .favourite-card img{
+        width: 100%;
+        max-height: 350px;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+    .favourite-card p{
+        color: #cbd5e1;
+        line-height: 1.7;
+    }
+    .remove-btn{
+        width:100%;
+        margin-top: 15px;
+        padding:12px;
+        background: #ef4444;
+        color: white;
+        border:none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .remove-btn:hover{
+        background: #dc2626;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="favourites-container">
+    <h1 class="favourites-heading">My Favourites</h1>
+    {% if favourites %}
+        <div class="favourites-gallery">
+            {% for favourite in favourites %}
+                <div class="favourite-card">
+                    <h2>{{ favourite.title }}</h2>
+                    <p><strong>Date:</strong> {{ favourite.date }}</p>
+                    <img src="{{ favourite.image_url }}" alt="{{ favourite.title }}">
+                    <h3>About this Picture</h3>
+                    <p>{{ favourite.explanation | safe }}</p>
+                    <form action="{% url 'remove_favourate' favourite.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="remove-btn">Remove from Favorites</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You haven't added any favourite pictures yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
